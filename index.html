@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Lab – Smart Study Guide | 23CS305</title>
+    <meta name="description" content="Smart study roadmap for Data Structures Lab exam – grouped programs, common patterns, quick revision.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HERO BANNER -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="badge">🚨 EXAM MODE ACTIVE</div>
+        <h1>DSA Lab <span class="gradient-text">Smart Roadmap</span></h1>
+        <p class="hero-sub">12 programs → 4 patterns. Learn the skeleton once, pass all. You got this! 💪</p>
+        <div class="exam-timer">
+            <span class="timer-label">⏰ Exam at 8:30 AM</span>
+            <span id="countdown" class="timer-count">Calculating...</span>
+        </div>
+    </div>
+    <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">Programs</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">Patterns</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Key Ideas</span></div>
+    </div>
+</div>
+
+<!-- MASTER SECRET SECTION -->
+<section class="secret-section">
+    <div class="container">
+        <h2 class="section-title">🔑 The Master Secret — Learn THIS, Pass ALL</h2>
+        <p class="section-sub">ALL 12 programs share the same 3 building blocks. Master these once!</p>
+        <div class="secret-grid">
+            <div class="secret-card" style="--c: #7c3aed">
+                <div class="secret-icon">🧱</div>
+                <h3>BLOCK 1: Structure</h3>
+                <p>How data is stored (Array vs Node)</p>
+                <div class="code-mini">// ARRAY way<br>int arr[MAX];<br>int top = -1;<br><br>// NODE (Linked List) way<br>struct node { int info; struct node *link; };<br>typedef struct node *NODE;<br>NODE first = NULL;</div>
+            </div>
+            <div class="secret-card" style="--c: #0891b2">
+                <div class="secret-icon">⚙️</div>
+                <h3>BLOCK 2: Operation</h3>
+                <p>Insert / Delete / Display — same in all!</p>
+                <div class="code-mini">// EVERY program has:<br>void insert() { ... }<br>void delete() { ... }<br>void display() { ... }<br><br>// Main always has a do-while menu loop!</div>
+            </div>
+            <div class="secret-card" style="--c: #059669">
+                <div class="secret-icon">🔁</div>
+                <h3>BLOCK 3: Main Loop</h3>
+                <p>Every program uses the SAME menu skeleton!</p>
+                <div class="code-mini">do {<br>  printf("1.Insert 2.Delete...");<br>  scanf("%d", &option);<br>  switch(option) {<br>    case 1: insert(); break;<br>    case 2: delete(); break;<br>  }<br>} while(option != 4);</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PATTERN GROUPS -->
+<section class="patterns-section">
+    <div class="container">
+        <h2 class="section-title">📦 4 Patterns — Group Similar Programs</h2>
+        <p class="section-sub">Programs in the same group share ~80% identical code. Learn one → know all!</p>
+
+        <!-- GROUP 1: ARRAY BASED -->
+        <div class="group-card" id="g1">
+            <div class="group-header" style="--gc: #7c3aed" onclick="toggleGroup('g1')">
+                <div class="group-left">
+                    <span class="group-badge">GROUP 1</span>
+                    <h3>🗄️ Array-Based Data Structures</h3>
+                    <p>Stack & Queue — Same array logic, different in/out end!</p>
+                </div>
+                <div class="group-programs">
+                    <span class="prog-tag">Exp 1: Stack</span>
+                    <span class="prog-tag">Exp 4: Queue</span>
+                    <span class="prog-tag">Exp 6: Circular Queue</span>
+                </div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="group-body">
+                <div class="comparison-table">
+                    <div class="comp-header">
+                        <div class="comp-cell head">Feature</div>
+                        <div class="comp-cell head" style="--bc:#7c3aed">STACK (Exp 1)</div>
+                        <div class="comp-cell head" style="--bc:#0891b2">QUEUE (Exp 4)</div>
+                        <div class="comp-cell head" style="--bc:#059669">CIRCULAR Q (Exp 6)</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">Array name</div>
+                        <div class="comp-cell"><code>int s[max]</code></div>
+                        <div class="comp-cell"><code>int q[max]</code></div>
+                        <div class="comp-cell"><code>int q[MAX]</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">Pointer(s)</div>
+                        <div class="comp-cell"><code>top = -1</code></div>
+                        <div class="comp-cell"><code>f=0, r=-1</code></div>
+                        <div class="comp-cell"><code>f=0, r=-1, count=0</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">FULL check</div>
+                        <div class="comp-cell"><code>top == max-1</code></div>
+                        <div class="comp-cell"><code>r == max-1</code></div>
+                        <div class="comp-cell"><code>count == MAX</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">EMPTY check</div>
+                        <div class="comp-cell"><code>top == -1</code></div>
+                        <div class="comp-cell"><code>f > r</code></div>
+                        <div class="comp-cell"><code>count == 0</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">INSERT</div>
+                        <div class="comp-cell"><code>s[++top] = val</code></div>
+                        <div class="comp-cell"><code>q[++r] = val</code></div>
+                        <div class="comp-cell"><code>r=(r+1)%MAX; q[r]=val; count++</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">DELETE</div>
+                        <div class="comp-cell"><code>val = s[top--]</code></div>
+                        <div class="comp-cell"><code>val = q[f++]</code></div>
+                        <div class="comp-cell"><code>print q[f]; f=(f+1)%MAX; count--</code></div>
+                    </div>
+                    <div class="comp-row highlight-row">
+                        <div class="comp-cell">🎯 Key Trick</div>
+                        <div class="comp-cell">Last IN = First OUT (top)</div>
+                        <div class="comp-cell">First IN = First OUT (front)</div>
+                        <div class="comp-cell">Wrap around with % MAX</div>
+                    </div>
+                </div>
+
+                <div class="memory-tip">
+                    <span class="tip-icon">💡</span>
+                    <strong>Memory Trick:</strong> STACK = pile of files (last added = first removed = <em>top</em>). QUEUE = toll gate (first car = first out = <em>front</em>). CIRCULAR = traffic signal (goes round and round using <code>%</code>).
+                </div>
+
+                <div class="code-viewer">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" onclick="showTab('stack-code','stack')">Stack (Exp 1)</button>
+                        <button class="tab-btn" onclick="showTab('queue-code','queue')">Queue (Exp 4)</button>
+                        <button class="tab-btn" onclick="showTab('cqueue-code','cqueue')">Circular Q (Exp 6)</button>
+                    </div>
+                    <div id="stack-code" class="tab-content active">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+<span class="c-def">#define</span> max 4
+
+<span class="c-type">int</span> s[max], top = <span class="c-num">-1</span>;
+
+<span class="c-type">void</span> push(<span class="c-type">int</span> s[], <span class="c-type">int</span> val) {
+    <span class="c-kw">if</span> (top == max-<span class="c-num">1</span>) { printf(<span class="c-str">"STACK OVERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    s[++top] = val;
+    printf(<span class="c-str">"%d inserted\n"</span>, val);
+}
+
+<span class="c-type">void</span> pop(<span class="c-type">int</span> s[]) {
+    <span class="c-kw">if</span> (top == <span class="c-num">-1</span>) { printf(<span class="c-str">"STACK UNDERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"%d deleted\n"</span>, s[top--]);
+}
+
+<span class="c-type">void</span> display(<span class="c-type">int</span> s[]) {
+    <span class="c-kw">if</span> (top == <span class="c-num">-1</span>) { printf(<span class="c-str">"EMPTY\n"</span>); <span class="c-kw">return</span>; }
+    <span class="c-kw">for</span>(<span class="c-type">int</span> i=top; i&gt;=<span class="c-num">0</span>; i--) printf(<span class="c-str">"%d\n"</span>, s[i]);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> val, option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.push 2.pop 3.display 4.exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>, &amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: scanf(<span class="c-str">"%d"</span>,&amp;val); push(s,val); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: pop(s); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: display(s); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span>(option != <span class="c-num">4</span>);
+}</code></pre>
+                    </div>
+                    <div id="queue-code" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-def">#define</span> max 3
+
+<span class="c-type">int</span> q[max], f=<span class="c-num">0</span>, r=<span class="c-num">-1</span>;
+
+<span class="c-type">void</span> insert_rear(<span class="c-type">int</span> q[], <span class="c-type">int</span> val) {
+    <span class="c-kw">if</span> (r == max-<span class="c-num">1</span>) { printf(<span class="c-str">"OVERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    q[++r] = val;
+    printf(<span class="c-str">"%d inserted\n"</span>, val);
+}
+
+<span class="c-type">void</span> delete_front(<span class="c-type">int</span> q[]) {
+    <span class="c-kw">if</span> (f &gt; r) { printf(<span class="c-str">"UNDERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"%d deleted\n"</span>, q[f++]);
+}
+
+<span class="c-type">void</span> display(<span class="c-type">int</span> q[]) {
+    <span class="c-kw">if</span> (f &gt; r) { printf(<span class="c-str">"EMPTY\n"</span>); <span class="c-kw">return</span>; }
+    <span class="c-kw">for</span>(<span class="c-type">int</span> i=f; i&lt;=r; i++) printf(<span class="c-str">"%d\t"</span>, q[i]);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> val, option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.insert 2.delete 3.display 4.exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>, &amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: scanf(<span class="c-str">"%d"</span>,&amp;val); insert_rear(q,val); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: delete_front(q); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: display(q); <span class="c-kw">break</span>;
+        }
+    } <span class="c-kw">while</span>(option != <span class="c-num">4</span>);
+}</code></pre>
+                    </div>
+                    <div id="cqueue-code" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+<span class="c-def">#define</span> MAX 5
+
+<span class="c-type">int</span> f=<span class="c-num">0</span>, r=<span class="c-num">-1</span>, q[MAX], count=<span class="c-num">0</span>;
+
+<span class="c-type">void</span> insert(<span class="c-type">int</span> q[], <span class="c-type">int</span> val) {
+    <span class="c-kw">if</span> (count==MAX) { printf(<span class="c-str">"OVERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    r = (r+<span class="c-num">1</span>) % MAX;  <span class="c-comment">// ← THE MAGIC: wrap around!</span>
+    q[r] = val; count++;
+    printf(<span class="c-str">"%d inserted\n"</span>, val);
+}
+
+<span class="c-type">void</span> delete_q(<span class="c-type">int</span> q[]) {
+    <span class="c-kw">if</span> (count==<span class="c-num">0</span>) { printf(<span class="c-str">"UNDERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"%d deleted\n"</span>, q[f]);
+    f = (f+<span class="c-num">1</span>) % MAX;  <span class="c-comment">// ← wrap front too!</span>
+    count--;
+}
+
+<span class="c-type">void</span> display(<span class="c-type">int</span> q[]) {
+    <span class="c-type">int</span> k=f;
+    <span class="c-kw">for</span>(<span class="c-type">int</span> i=<span class="c-num">1</span>; i&lt;=count; i++) {
+        printf(<span class="c-str">"%d\t"</span>, q[k]);
+        k = (k+<span class="c-num">1</span>) % MAX;
+    }
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> val, option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Delete 3.Display 4.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>, &amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: scanf(<span class="c-str">"%d"</span>,&amp;val); insert(q,val); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: delete_q(q); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: display(q); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span>(option != <span class="c-num">4</span>);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUP 2: STACK APPLICATIONS -->
+        <div class="group-card" id="g2">
+            <div class="group-header" style="--gc: #b45309" onclick="toggleGroup('g2')">
+                <div class="group-left">
+                    <span class="group-badge">GROUP 2</span>
+                    <h3>🔧 Stack Applications</h3>
+                    <p>Infix→Postfix & Postfix Evaluation — use the SAME push/pop from Group 1!</p>
+                </div>
+                <div class="group-programs">
+                    <span class="prog-tag">Exp 2: Infix→Postfix</span>
+                    <span class="prog-tag">Exp 3: Postfix Eval</span>
+                </div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="group-body">
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="flow-icon">📝</div>
+                        <div class="flow-text"><strong>Infix Input</strong><br><code>(a+b)*c</code></div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step highlight">
+                        <div class="flow-icon">📚</div>
+                        <div class="flow-text"><strong>Exp 2: Convert</strong><br>Using char stack + priority rules</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🧮</div>
+                        <div class="flow-text"><strong>Postfix: ab+c*</strong><br>Result ready!</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step highlight">
+                        <div class="flow-icon">⚡</div>
+                        <div class="flow-text"><strong>Exp 3: Evaluate</strong><br>Using double stack + math</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-icon">✅</div>
+                        <div class="flow-text"><strong>Answer: 20</strong></div>
+                    </div>
+                </div>
+
+                <div class="two-col-code">
+                    <div class="col-code">
+                        <h4 class="col-title" style="color:#b45309">Exp 2 – Infix to Postfix RULES</h4>
+                        <div class="rules-list">
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If operand (a,b,1,2...)</strong> → directly append to postfix</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If '('</strong> → push to stack</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If ')'</strong> → pop until '(' found, discard '('</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If operator (+,-,*,/)</strong> → pop operators with higher/equal priority, then push current</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>Priority:</strong> ^ > * / % > + -</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>At end</strong> → pop all remaining operators</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-code">
+                        <h4 class="col-title" style="color:#b45309">Exp 3 – Postfix Eval RULES</h4>
+                        <div class="rules-list">
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If digit (0-9)</strong> → push its numeric value</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>If operator</strong> → pop op2, pop op1, compute op1 OP op2, push result</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">⚠️</span>
+                                <div><strong>Order matters!</strong> op2 = pop first, op1 = pop second</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>Stack type:</strong> <code>double s[max]</code> (not int!)</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>Compile flag:</strong> <code>cc prog3.c -lm</code> (for math.h pow)</div>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-icon">📌</span>
+                                <div><strong>At end</strong> → single remaining element = answer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="walkthrough-box">
+                    <h4>🎯 Dry Run: (a+b)*c → postfix → ab+c*</h4>
+                    <div class="dry-run">
+                        <table>
+                            <tr><th>Char</th><th>Stack</th><th>Postfix</th><th>Why</th></tr>
+                            <tr><td>(</td><td>(</td><td></td><td>Push (</td></tr>
+                            <tr><td>a</td><td>(</td><td>a</td><td>Operand → postfix</td></tr>
+                            <tr><td>+</td><td>( +</td><td>a</td><td>Push operator</td></tr>
+                            <tr><td>b</td><td>( +</td><td>ab</td><td>Operand → postfix</td></tr>
+                            <tr><td>)</td><td></td><td>ab+</td><td>Pop till ( → output +</td></tr>
+                            <tr><td>*</td><td>*</td><td>ab+</td><td>Push *</td></tr>
+                            <tr><td>c</td><td>*</td><td>ab+c</td><td>Operand → postfix</td></tr>
+                            <tr><td>END</td><td></td><td>ab+c*</td><td>Pop remaining *</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- CODE VIEWER G2 -->
+                <div class="code-viewer">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" onclick="showTab('g2-infix','g2')">Exp 2: Infix→Postfix</button>
+                        <button class="tab-btn" onclick="showTab('g2-postfix','g2')">Exp 3: Postfix Eval</button>
+                    </div>
+                    <div id="g2-infix" class="tab-content active">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;string.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+<span class="c-kw">#include</span> &lt;ctype.h&gt;
+<span class="c-def">#define</span> max <span class="c-num">100</span>
+
+<span class="c-type">char</span> s[max]; <span class="c-type">int</span> top = <span class="c-num">-1</span>;
+
+<span class="c-type">void</span> push(<span class="c-type">char</span> s[], <span class="c-type">char</span> val) {
+    <span class="c-kw">if</span>(top==max-<span class="c-num">1</span>) { printf(<span class="c-str">"OVERFLOW\n"</span>); <span class="c-kw">return</span>; }
+    s[++top] = val;
+}
+<span class="c-type">char</span> pop(<span class="c-type">char</span> s[]) {
+    <span class="c-kw">if</span>(top==<span class="c-num">-1</span>) { printf(<span class="c-str">"UNDERFLOW\n"</span>); <span class="c-kw">return</span> <span class="c-str">' '</span>; }
+    <span class="c-kw">return</span> s[top--];
+}
+<span class="c-type">int</span> getPriority(<span class="c-type">char</span> op) {
+    <span class="c-kw">if</span>(op==<span class="c-str">'^'</span>||op==<span class="c-str">'$'</span>) <span class="c-kw">return</span> <span class="c-num">2</span>;
+    <span class="c-kw">if</span>(op==<span class="c-str">'/'</span>||op==<span class="c-str">'*'</span>||op==<span class="c-str">'%'</span>) <span class="c-kw">return</span> <span class="c-num">1</span>;
+    <span class="c-kw">if</span>(op==<span class="c-str">'+'</span>||op==<span class="c-str">'-'</span>) <span class="c-kw">return</span> <span class="c-num">0</span>;
+    <span class="c-kw">return</span> -<span class="c-num">1</span>;
+}
+
+<span class="c-type">void</span> InfixToPostfix(<span class="c-type">char</span> infix[], <span class="c-type">char</span> postfix[]) {
+    <span class="c-type">int</span> i=<span class="c-num">0</span>, j=<span class="c-num">0</span>; <span class="c-type">char</span> temp;
+    <span class="c-kw">while</span>(infix[i] != <span class="c-str">'\0'</span>) {
+        <span class="c-kw">if</span>(infix[i]==<span class="c-str">'('</span>) { push(s,infix[i]); i++; }
+        <span class="c-kw">else if</span>(infix[i]==<span class="c-str">')'</span>) {
+            <span class="c-kw">while</span>(top!=-<span class="c-num">1</span> &amp;&amp; s[top]!=<span class="c-str">'('</span>) postfix[j++]=pop(s);
+            temp=pop(s); <span class="c-comment">// discard '('</span>
+            i++;
+        }
+        <span class="c-kw">else if</span>(isdigit(infix[i])||isalpha(infix[i])) { postfix[j++]=infix[i++]; }
+        <span class="c-kw">else</span> {
+            <span class="c-kw">while</span>(top!=-<span class="c-num">1</span> &amp;&amp; s[top]!=<span class="c-str">'('</span> &amp;&amp; getPriority(s[top])&gt;=getPriority(infix[i]))
+                postfix[j++]=pop(s);
+            push(s,infix[i++]);
+        }
+    }
+    <span class="c-kw">while</span>(top!=-<span class="c-num">1</span>) postfix[j++]=pop(s);
+    postfix[j]=<span class="c-str">'\0'</span>;
+}
+
+<span class="c-type">int</span> main() {
+    <span class="c-type">char</span> infix[<span class="c-num">100</span>], postfix[<span class="c-num">100</span>];
+    printf(<span class="c-str">"Enter infix expression\n"</span>);
+    scanf(<span class="c-str">"%s"</span>, infix);
+    InfixToPostfix(infix, postfix);
+    printf(<span class="c-str">"Postfix: %s\n"</span>, postfix);
+    <span class="c-kw">return</span> <span class="c-num">0</span>;
+}
+<span class="c-comment">// Compile: cc prog2.c   Run: ./a.out
+// Input: (a+b)*c   Output: ab+c*</span></code></pre>
+                    </div>
+                    <div id="g2-postfix" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;ctype.h&gt;
+<span class="c-kw">#include</span> &lt;math.h&gt;
+<span class="c-def">#define</span> max <span class="c-num">100</span>
+
+<span class="c-type">double</span> s[max]; <span class="c-type">int</span> top = <span class="c-num">-1</span>; <span class="c-comment">// NOTE: double stack!</span>
+
+<span class="c-type">void</span> push(<span class="c-type">double</span> s[], <span class="c-type">double</span> val) { s[++top]=val; }
+<span class="c-type">double</span> pop(<span class="c-type">double</span> s[]) { <span class="c-kw">return</span> s[top--]; }
+
+<span class="c-type">double</span> evaluate(<span class="c-type">char</span> postfix[]) {
+    <span class="c-type">int</span> i=<span class="c-num">0</span>;
+    <span class="c-type">double</span> op1, op2, value;
+    <span class="c-kw">while</span>(postfix[i] != <span class="c-str">'\0'</span>) {
+        <span class="c-kw">if</span>(isdigit(postfix[i])) {
+            push(s, (<span class="c-type">double</span>)(postfix[i]-<span class="c-str">'0'</span>)); <span class="c-comment">// digit→number</span>
+        } <span class="c-kw">else</span> {
+            op2 = pop(s); <span class="c-comment">// pop op2 FIRST!</span>
+            op1 = pop(s); <span class="c-comment">// then op1</span>
+            <span class="c-kw">switch</span>(postfix[i]) {
+                <span class="c-kw">case</span> <span class="c-str">'+'</span>: value=op1+op2; <span class="c-kw">break</span>;
+                <span class="c-kw">case</span> <span class="c-str">'-'</span>: value=op1-op2; <span class="c-kw">break</span>;
+                <span class="c-kw">case</span> <span class="c-str">'*'</span>: value=op1*op2; <span class="c-kw">break</span>;
+                <span class="c-kw">case</span> <span class="c-str">'/'</span>: value=op1/op2; <span class="c-kw">break</span>;
+                <span class="c-kw">case</span> <span class="c-str">'%'</span>: value=(<span class="c-type">int</span>)op1%(<span class="c-type">int</span>)op2; <span class="c-kw">break</span>;
+                <span class="c-kw">case</span> <span class="c-str">'^'</span>:
+                <span class="c-kw">case</span> <span class="c-str">'$'</span>: value=pow(op1,op2); <span class="c-kw">break</span>;
+            }
+            push(s, value);
+        }
+        i++;
+    }
+    <span class="c-kw">return</span> pop(s);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">char</span> postfix[<span class="c-num">100</span>];
+    printf(<span class="c-str">"Enter postfix expression\n"</span>);
+    scanf(<span class="c-str">"%s"</span>, postfix);
+    printf(<span class="c-str">"Result = %lf\n"</span>, evaluate(postfix));
+}
+<span class="c-comment">// Compile: cc prog3.c -lm   Run: ./a.out
+// Input: 64+2*   Output: 20.000000</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUP 3: LINKED LISTS -->
+        <div class="group-card" id="g3">
+            <div class="group-header" style="--gc: #0891b2" onclick="toggleGroup('g3')">
+                <div class="group-left">
+                    <span class="group-badge">GROUP 3</span>
+                    <h3>🔗 Linked List Family</h3>
+                    <p>All use struct node + malloc. Only difference: where to insert/delete!</p>
+                </div>
+                <div class="group-programs">
+                    <span class="prog-tag">Exp 7: Circular LL</span>
+                    <span class="prog-tag">Exp 8: Singly LL</span>
+                    <span class="prog-tag">Exp 9: Max/Min/Sum</span>
+                    <span class="prog-tag">Exp 10: Ordered LL</span>
+                    <span class="prog-tag">Exp 11: Doubly LL</span>
+                </div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="group-body">
+                <div class="ll-skeleton">
+                    <h4>🧬 Common DNA of ALL Linked Lists (memorize this!)</h4>
+                    <pre><code><span class="c-comment">// STEP 1: Same struct ALWAYS</span>
+<span class="c-kw">struct</span> node {
+    <span class="c-type">int</span> info;
+    <span class="c-kw">struct</span> node *link;      <span class="c-comment">// Singly / Circular</span>
+    <span class="c-comment">// struct node *llink, *rlink;  // Doubly (Exp 11)</span>
+};
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL;
+
+<span class="c-comment">// STEP 2: Create node - SAME in ALL programs</span>
+temp = (NODE) malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+<span class="c-kw">if</span> (temp == NULL) { printf(<span class="c-str">"out of memory\n"</span>); exit(<span class="c-num">0</span>); }
+temp-&gt;info = item;
+temp-&gt;link = NULL;</code></pre>
+                </div>
+
+                <!-- COMPARISON TABLE LIKE GROUP 1 -->
+                <div class="comparison-table">
+                    <div class="comp-header">
+                        <div class="comp-cell head">Feature</div>
+                        <div class="comp-cell head" style="--bc:#7c3aed">Exp 8: Singly LL</div>
+                        <div class="comp-cell head" style="--bc:#0891b2">Exp 7: Circular LL</div>
+                        <div class="comp-cell head" style="--bc:#059669">Exp 10: Ordered LL</div>
+                        <div class="comp-cell head" style="--bc:#b45309">Exp 11: Doubly LL</div>
+                        <div class="comp-cell head" style="--bc:#dc2626">Exp 9: Max/Min/Sum</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">Story</div>
+                        <div class="comp-cell">Treasure Hunt</div>
+                        <div class="comp-cell">Parking Lot</div>
+                        <div class="comp-cell">Phonebook</div>
+                        <div class="comp-cell">iPod Songs</div>
+                        <div class="comp-cell">Find Numbers</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">Struct</div>
+                        <div class="comp-cell"><code>info + *link</code></div>
+                        <div class="comp-cell"><code>info + *link</code></div>
+                        <div class="comp-cell"><code>info + *link</code></div>
+                        <div class="comp-cell"><code>info + *llink + *rlink</code></div>
+                        <div class="comp-cell"><code>info + *link</code></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">INSERT</div>
+                        <div class="comp-cell"><code>temp→link=first; first=temp;</code><br><small>Insert at FRONT</small></div>
+                        <div class="comp-cell">Go to last node, <code>last→link=temp; temp→link=first;</code><br><small>Insert at REAR</small></div>
+                        <div class="comp-cell">Walk until correct position, insert between prev &amp; cur<br><small>Stays SORTED</small></div>
+                        <div class="comp-cell"><code>first→llink=temp; temp→rlink=first; first=temp;</code><br><small>Insert at BEGIN</small></div>
+                        <div class="comp-cell">Same as Exp 8 insert<br><small>No change needed</small></div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">DELETE</div>
+                        <div class="comp-cell">Find key, <code>prev→link=cur→link;</code> free cur<br><small>Delete by KEY</small></div>
+                        <div class="comp-cell">Go to last, <code>last→link=first→link;</code> free first<br><small>Delete FRONT</small></div>
+                        <div class="comp-cell">❌ Not required</div>
+                        <div class="comp-cell"><code>first=first→rlink; first→llink=NULL;</code> free<br><small>Delete BEGIN</small></div>
+                        <div class="comp-cell">❌ Not required</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">DISPLAY</div>
+                        <div class="comp-cell"><code>while(cur!=NULL)</code><br><code>cur=cur→link</code></div>
+                        <div class="comp-cell"><code>while(cur→link!=first)</code><br>then print last node too</div>
+                        <div class="comp-cell"><code>while(cur!=NULL)</code><br>same as Exp 8</div>
+                        <div class="comp-cell">Forward: <code>cur=cur→rlink</code><br>Backward: go to last, <code>cur=cur→llink</code></div>
+                        <div class="comp-cell"><code>while(ptr!=NULL)</code><br>track max, min, sum</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-cell">Special Line</div>
+                        <div class="comp-cell">—</div>
+                        <div class="comp-cell">New node: <code>temp→link=temp;</code><br>(points to itself first!)</div>
+                        <div class="comp-cell">If item &lt; first: <code>temp→link=ofirst; ofirst=temp;</code></div>
+                        <div class="comp-cell">New node: <code>temp→llink=NULL; temp→rlink=NULL;</code></div>
+                        <div class="comp-cell"><code>max=min=first→info;</code> then loop</div>
+                    </div>
+                    <div class="comp-row highlight-row">
+                        <div class="comp-cell">🎯 Key Trick</div>
+                        <div class="comp-cell">new→link = OLD first<br>then first = new</div>
+                        <div class="comp-cell">LAST node's link = FIRST node (circular!)</div>
+                        <div class="comp-cell">Walk until item &gt; cur→info stops</div>
+                        <div class="comp-cell">Every node has TWO pointers: left + right</div>
+                        <div class="comp-cell">One loop, track 3 values</div>
+                    </div>
+                </div>
+
+                <div class="memory-tip">
+                    <span class="tip-icon">💡</span>
+                    <strong>Memory Trick:</strong>
+                    Exp 8 = Treasure Hunt (find &amp; remove clue = delete by key) |
+                    Exp 7 = Parking Lot (cars enter rear, leave front = circular) |
+                    Exp 10 = Phonebook (always sorted alphabetically = sorted insert) |
+                    Exp 11 = iPod (go forward &amp; backward = llink + rlink) |
+                    Exp 9 = Exp 8 + 3 extra math functions!
+                </div>
+
+
+
+                <!-- CODE VIEWER G3 -->
+                <div class="code-viewer">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" onclick="showTab('g3-singly','g3')">Exp 8: Singly LL</button>
+                        <button class="tab-btn" onclick="showTab('g3-minmax','g3')">Exp 9: Max/Min/Sum</button>
+                        <button class="tab-btn" onclick="showTab('g3-ordered','g3')">Exp 10: Ordered LL</button>
+                        <button class="tab-btn" onclick="showTab('g3-circular','g3')">Exp 7: Circular LL</button>
+                        <button class="tab-btn" onclick="showTab('g3-doubly','g3')">Exp 11: Doubly LL</button>
+                    </div>
+                    <div id="g3-singly" class="tab-content active">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *link; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL;
+
+NODE insert(NODE first) {
+    NODE temp; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;item);
+    temp = (NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info = item;
+    temp-&gt;link = first;  <span class="c-comment">// point to old first</span>
+    first = temp;        <span class="c-comment">// new node becomes first</span>
+    printf(<span class="c-str">"%d inserted\n"</span>, item);
+    <span class="c-kw">return</span> first;
+}
+
+NODE delete_sp(NODE first) {
+    NODE cur, prev; <span class="c-type">int</span> key;
+    printf(<span class="c-str">"Enter value to delete\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;key);
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span> first; }
+    <span class="c-kw">if</span>(key==first-&gt;info) { cur=first; first=first-&gt;link; free(cur); <span class="c-kw">return</span> first; }
+    cur=first; prev=NULL;
+    <span class="c-kw">while</span>(cur!=NULL &amp;&amp; cur-&gt;info!=key) { prev=cur; cur=cur-&gt;link; }
+    <span class="c-kw">if</span>(cur==NULL) { printf(<span class="c-str">"Not found\n"</span>); <span class="c-kw">return</span> first; }
+    prev-&gt;link = cur-&gt;link;
+    printf(<span class="c-str">"%d deleted\n"</span>, cur-&gt;info);
+    free(cur); <span class="c-kw">return</span> first;
+}
+
+<span class="c-type">void</span> display(NODE first) {
+    NODE cur = first;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span>; }
+    <span class="c-kw">while</span>(cur!=NULL) { printf(<span class="c-str">"%d\t"</span>, cur-&gt;info); cur=cur-&gt;link; }
+    printf(<span class="c-str">"\n"</span>);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Delete 3.Display 4.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>,&amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: first=insert(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: first=delete_sp(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: display(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span>(option!=<span class="c-num">4</span>);
+}
+<span class="c-comment">// Compile: cc prog8.c   Run: ./a.out</span></code></pre>
+                    </div>
+                    <div id="g3-minmax" class="tab-content">
+                        <pre><code><span class="c-comment">// Exp 9 = Exp 8 insert + display + 3 NEW functions below</span>
+<span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *link; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL;
+
+<span class="c-comment">// (same insert + display as Exp 8 above)</span>
+
+<span class="c-type">void</span> findMax(NODE first) {
+    <span class="c-type">int</span> max = first-&gt;info;
+    NODE ptr = first;
+    <span class="c-kw">while</span>(ptr!=NULL) {
+        <span class="c-kw">if</span>(ptr-&gt;info &gt; max) max=ptr-&gt;info;
+        ptr=ptr-&gt;link;
+    }
+    printf(<span class="c-str">"Maximum = %d\n"</span>, max);
+}
+
+<span class="c-type">void</span> findMin(NODE first) {
+    <span class="c-type">int</span> min = first-&gt;info;
+    NODE ptr = first;
+    <span class="c-kw">while</span>(ptr!=NULL) {
+        <span class="c-kw">if</span>(ptr-&gt;info &lt; min) min=ptr-&gt;info;
+        ptr=ptr-&gt;link;
+    }
+    printf(<span class="c-str">"Minimum = %d\n"</span>, min);
+}
+
+<span class="c-type">void</span> findSum(NODE first) {
+    <span class="c-type">int</span> sum=<span class="c-num">0</span>;
+    NODE ptr = first;
+    <span class="c-kw">while</span>(ptr!=NULL) { sum+=ptr-&gt;info; ptr=ptr-&gt;link; }
+    printf(<span class="c-str">"Sum = %d\n"</span>, sum);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Display 3.Max 4.Min 5.Sum 6.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>,&amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: first=insert(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: display(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: findMax(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: findMin(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">5</span>: findSum(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">6</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span>(option!=<span class="c-num">6</span>);
+}
+<span class="c-comment">// Compile: cc prog9.c   Run: ./a.out</span></code></pre>
+                    </div>
+                    <div id="g3-ordered" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *link; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL;
+
+NODE insert(NODE first) {
+    NODE temp, cur, prev; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;item);
+    temp=(NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info=item; temp-&gt;link=NULL;
+    <span class="c-kw">if</span>(first==NULL) { first=temp; <span class="c-kw">return</span> first; }
+    <span class="c-kw">if</span>(item &lt; first-&gt;info) {   <span class="c-comment">// insert at beginning</span>
+        temp-&gt;link=first; first=temp; <span class="c-kw">return</span> first;
+    }
+    cur=first; prev=cur;        <span class="c-comment">// find correct position</span>
+    <span class="c-kw">while</span>(cur!=NULL &amp;&amp; item&gt;cur-&gt;info) { prev=cur; cur=cur-&gt;link; }
+    prev-&gt;link=temp; temp-&gt;link=cur;  <span class="c-comment">// insert in middle/end</span>
+    printf(<span class="c-str">"%d inserted\n"</span>, item);
+    <span class="c-kw">return</span> first;
+}
+
+<span class="c-type">void</span> display(NODE first) {
+    NODE cur=first;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span>; }
+    <span class="c-kw">while</span>(cur!=NULL) { printf(<span class="c-str">"%d\t"</span>,cur-&gt;info); cur=cur-&gt;link; }
+    printf(<span class="c-str">"\n"</span>);
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Display 3.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>,&amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: first=insert(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: display(first); <span class="c-kw">break</span>;
+        }
+    } <span class="c-kw">while</span>(option!=<span class="c-num">3</span>);
+}
+<span class="c-comment">// Compile: cc prog10.c   Run: ./a.out
+// Insert 11,55,22 → displays 11 22 55 (sorted!)</span></code></pre>
+                    </div>
+                    <div id="g3-circular" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *link; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL;
+
+NODE insertRear(NODE first) {
+    NODE temp, cur; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;item);
+    temp=(NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info=item; temp-&gt;link=temp; <span class="c-comment">// point to itself</span>
+    <span class="c-kw">if</span>(first==NULL) { first=temp; <span class="c-kw">return</span> first; }
+    cur=first;
+    <span class="c-kw">while</span>(cur-&gt;link!=first) cur=cur-&gt;link; <span class="c-comment">// find last</span>
+    cur-&gt;link=temp; temp-&gt;link=first; <span class="c-comment">// link at rear</span>
+    printf(<span class="c-str">"%d inserted\n"</span>,item);
+    <span class="c-kw">return</span> first;
+}
+
+NODE deleteFront(NODE first) {
+    NODE cur;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span> first; }
+    <span class="c-kw">if</span>(first-&gt;link==first) { <span class="c-comment">// only 1 node</span>
+        printf(<span class="c-str">"%d deleted\n"</span>,first-&gt;info);
+        free(first); <span class="c-kw">return</span> NULL;
+    }
+    cur=first;
+    <span class="c-kw">while</span>(cur-&gt;link!=first) cur=cur-&gt;link; <span class="c-comment">// find last</span>
+    cur-&gt;link=first-&gt;link; <span class="c-comment">// last points to 2nd</span>
+    printf(<span class="c-str">"%d deleted\n"</span>,first-&gt;info);
+    free(first); first=cur-&gt;link; <span class="c-kw">return</span> first;
+}
+
+<span class="c-type">void</span> display(NODE first) {
+    NODE cur;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span>; }
+    cur=first;
+    <span class="c-kw">while</span>(cur-&gt;link!=first) { printf(<span class="c-str">"%d\t"</span>,cur-&gt;info); cur=cur-&gt;link; }
+    printf(<span class="c-str">"%d\n"</span>,cur-&gt;info); <span class="c-comment">// print last node</span>
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Delete 3.Display 4.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>,&amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: first=insertRear(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: first=deleteFront(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: display(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span>(option!=<span class="c-num">4</span>);
+}
+<span class="c-comment">// Compile: cc prog7.c   Run: ./a.out</span></code></pre>
+                    </div>
+                    <div id="g3-doubly" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *llink, *rlink; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE first = NULL; <span class="c-comment">// llink=left(prev) rlink=right(next)</span>
+
+NODE insert_begin(NODE first) {
+    NODE temp; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;item);
+    temp=(NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info=item; temp-&gt;llink=NULL; temp-&gt;rlink=NULL;
+    <span class="c-kw">if</span>(first==NULL) { first=temp; <span class="c-kw">return</span> first; }
+    first-&gt;llink=temp;   <span class="c-comment">// old first's left = new</span>
+    temp-&gt;rlink=first;   <span class="c-comment">// new right = old first</span>
+    first=temp;          <span class="c-comment">// update first</span>
+    printf(<span class="c-str">"%d inserted\n"</span>,item);
+    <span class="c-kw">return</span> first;
+}
+
+NODE delete_begin(NODE first) {
+    NODE cur;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span> first; }
+    cur=first;
+    first=first-&gt;rlink;          <span class="c-comment">// move first to next</span>
+    <span class="c-kw">if</span>(first!=NULL) first-&gt;llink=NULL; <span class="c-comment">// fix left pointer</span>
+    printf(<span class="c-str">"%d deleted\n"</span>,cur-&gt;info);
+    free(cur); <span class="c-kw">return</span> first;
+}
+
+NODE display(NODE first) {
+    NODE cur=first;
+    <span class="c-kw">if</span>(first==NULL) { printf(<span class="c-str">"Empty\n"</span>); <span class="c-kw">return</span> first; }
+    <span class="c-kw">while</span>(cur!=NULL) { printf(<span class="c-str">"%d\t"</span>,cur-&gt;info); cur=cur-&gt;rlink; }
+    printf(<span class="c-str">"\n"</span>); <span class="c-kw">return</span> first;
+}
+
+<span class="c-type">int</span> main() {
+    <span class="c-type">int</span> option;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"1.Insert 2.Delete 3.Display 4.Exit\n"</span>);
+        scanf(<span class="c-str">"%d"</span>,&amp;option);
+        <span class="c-kw">switch</span>(option) {
+            <span class="c-kw">case</span> <span class="c-num">1</span>: first=insert_begin(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">2</span>: first=delete_begin(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">3</span>: first=display(first); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">4</span>: <span class="c-kw">break</span>;
+        }
+    } <span class="c-kw">while</span>(option!=<span class="c-num">4</span>);
+    <span class="c-kw">return</span> <span class="c-num">0</span>;
+}
+<span class="c-comment">// Compile: cc prog11.c   Run: ./a.out</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUP 4: RECURSION + BST -->
+        <div class="group-card" id="g4">
+            <div class="group-header" style="--gc: #dc2626" onclick="toggleGroup('g4')">
+                <div class="group-left">
+                    <span class="group-badge">GROUP 4</span>
+                    <h3>🌳 Recursion & Binary Search Tree</h3>
+                    <p>Binary Search + Tower of Hanoi + BST — function calls itself!</p>
+                </div>
+                <div class="group-programs">
+                    <span class="prog-tag">Exp 5a: Binary Search</span>
+                    <span class="prog-tag">Exp 5b: Tower of Hanoi</span>
+                    <span class="prog-tag">Exp 12: BST</span>
+                </div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="group-body">
+                <div class="two-col-code">
+                    <div class="col-code">
+                        <h4 class="col-title" style="color:#dc2626">Exp 5a – Binary Search (Recursive)</h4>
+                        <pre><code><span class="c-comment">// THE WHOLE TRICK: call itself with smaller range</span>
+<span class="c-type">int</span> search(<span class="c-type">int</span> key, <span class="c-type">int</span> a[], <span class="c-type">int</span> low, <span class="c-type">int</span> high) {
+    <span class="c-kw">if</span> (low &gt; high) <span class="c-kw">return</span> -<span class="c-num">1</span>;  <span class="c-comment">// NOT FOUND</span>
+    mid = (low + high) / <span class="c-num">2</span>;
+    <span class="c-kw">if</span> (key == a[mid]) <span class="c-kw">return</span> mid;  <span class="c-comment">// FOUND!</span>
+    <span class="c-kw">if</span> (key &lt; a[mid])
+        <span class="c-kw">return</span> search(key, a, low, mid-<span class="c-num">1</span>);
+    <span class="c-kw">else</span>
+        <span class="c-kw">return</span> search(key, a, mid+<span class="c-num">1</span>, high);
+}
+<span class="c-comment">// Call: search(key, a, 0, n-1)</span></code></pre>
+                        <div class="memory-tip" style="margin-top:12px">
+                            <span class="tip-icon">🧠</span>
+                            <strong>Memory:</strong> Low&gt;High=not found, found=return mid, smaller=go left (low to mid-1), bigger=go right (mid+1 to high)
+                        </div>
+                    </div>
+                    <div class="col-code">
+                        <h4 class="col-title" style="color:#dc2626">Exp 5b – Tower of Hanoi</h4>
+                        <pre><code><span class="c-comment">// 3 pegs: src, dest, temp</span>
+<span class="c-type">void</span> move(<span class="c-type">int</span> n, <span class="c-type">char</span> src, <span class="c-type">char</span> dest, <span class="c-type">char</span> temp) {
+    <span class="c-kw">if</span> (n == <span class="c-num">1</span>) {
+        printf(<span class="c-str">"Move disc from %c to %c\n"</span>, src, dest);
+        <span class="c-kw">return</span>;
+    }
+    move(n-<span class="c-num">1</span>, src, temp, dest);  <span class="c-comment">// move n-1 to temp</span>
+    move(<span class="c-num">1</span>, src, dest, temp);    <span class="c-comment">// move bottom</span>
+    move(n-<span class="c-num">1</span>, temp, dest, src); <span class="c-comment">// move n-1 to dest</span>
+}
+<span class="c-comment">// Call: move(n, 'A', 'C', 'B')</span></code></pre>
+                        <div class="memory-tip" style="margin-top:12px">
+                            <span class="tip-icon">🧠</span>
+                            <strong>Memory:</strong> n=1 is the stop. 3 calls: move small ones aside, move big disc, bring small ones back.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bst-section">
+                    <h4 class="col-title" style="color:#dc2626">Exp 12 – Binary Search Tree (BST)</h4>
+                    <div class="bst-visual">
+                        <div class="tree-row">
+                            <div class="tree-node root-node">11 (root)</div>
+                        </div>
+                        <div class="tree-connectors">
+                            <div class="conn-left">smaller → left</div>
+                            <div class="conn-right">bigger → right</div>
+                        </div>
+                        <div class="tree-row">
+                            <div class="tree-node left-node">NULL</div>
+                            <div class="tree-node right-node">55</div>
+                        </div>
+                        <div class="tree-row last-row">
+                            <div class="tree-node leaf-node">23</div>
+                            <div class="tree-node empty-node"></div>
+                        </div>
+                    </div>
+                    <div class="traversals-box">
+                        <div class="trav-item">
+                            <span class="trav-badge" style="background:#7c3aed">Preorder</span>
+                            Root → Left → Right &nbsp;<strong>→ 11, 55, 23, 43</strong>
+                        </div>
+                        <div class="trav-item">
+                            <span class="trav-badge" style="background:#0891b2">Inorder</span>
+                            Left → Root → Right &nbsp;<strong>→ 11, 23, 43, 55 (SORTED!)</strong>
+                        </div>
+                        <div class="trav-item">
+                            <span class="trav-badge" style="background:#059669">Postorder</span>
+                            Left → Right → Root &nbsp;<strong>→ 43, 23, 55, 11</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CODE VIEWER G4 -->
+                <div class="code-viewer" style="margin-top:20px">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" onclick="showTab('g4-bsearch','g4')">Exp 5a: Binary Search</button>
+                        <button class="tab-btn" onclick="showTab('g4-hanoi','g4')">Exp 5b: Tower of Hanoi</button>
+                        <button class="tab-btn" onclick="showTab('g4-bst','g4')">Exp 12: BST</button>
+                    </div>
+                    <div id="g4-bsearch" class="tab-content active">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+
+<span class="c-type">int</span> search(<span class="c-type">int</span> key, <span class="c-type">int</span> a[<span class="c-num">20</span>], <span class="c-type">int</span> low, <span class="c-type">int</span> high) {
+    <span class="c-type">int</span> mid;
+    <span class="c-kw">if</span>(low &gt; high) <span class="c-kw">return</span> -<span class="c-num">1</span>;        <span class="c-comment">// BASE: not found</span>
+    mid = (low + high) / <span class="c-num">2</span>;
+    <span class="c-kw">if</span>(key == a[mid]) <span class="c-kw">return</span> mid;   <span class="c-comment">// BASE: found!</span>
+    <span class="c-kw">if</span>(key &lt; a[mid])
+        <span class="c-kw">return</span> search(key, a, low, mid-<span class="c-num">1</span>);   <span class="c-comment">// go left</span>
+    <span class="c-kw">else</span>
+        <span class="c-kw">return</span> search(key, a, mid+<span class="c-num">1</span>, high);  <span class="c-comment">// go right</span>
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> n, i, key, pos, a[<span class="c-num">20</span>];
+    printf(<span class="c-str">"Enter number of elements\n"</span>);
+    scanf(<span class="c-str">"%d"</span>,&amp;n);
+    printf(<span class="c-str">"Enter %d numbers (sorted!)\n"</span>,n);
+    <span class="c-kw">for</span>(i=<span class="c-num">0</span>; i&lt;n; i++) scanf(<span class="c-str">"%d"</span>,&amp;a[i]);
+    printf(<span class="c-str">"Enter element to search\n"</span>);
+    scanf(<span class="c-str">"%d"</span>,&amp;key);
+    pos = search(key, a, <span class="c-num">0</span>, n-<span class="c-num">1</span>);
+    <span class="c-kw">if</span>(pos==-<span class="c-num">1</span>) printf(<span class="c-str">"Not found\n"</span>);
+    <span class="c-kw">else</span> printf(<span class="c-str">"Found at position: %d\n"</span>, pos+<span class="c-num">1</span>);
+}
+<span class="c-comment">// Compile: cc prog5a.c   Run: ./a.out
+// Input must be sorted! e.g. 11 22 33 44</span></code></pre>
+                    </div>
+                    <div id="g4-hanoi" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+
+<span class="c-comment">// Peg A=src, Peg C=dest, Peg B=temp</span>
+<span class="c-type">void</span> move(<span class="c-type">int</span> n, <span class="c-type">char</span> src, <span class="c-type">char</span> dest, <span class="c-type">char</span> temp) {
+    <span class="c-kw">if</span>(n == <span class="c-num">1</span>) {   <span class="c-comment">// BASE CASE: move 1 disc directly</span>
+        printf(<span class="c-str">"Move one disc from %c to %c\n"</span>, src, dest);
+        <span class="c-kw">return</span>;
+    }
+    move(n-<span class="c-num">1</span>, src, temp, dest);  <span class="c-comment">// Step 1: move n-1 discs to temp</span>
+    move(<span class="c-num">1</span>,   src, dest, temp);  <span class="c-comment">// Step 2: move bottom disc to dest</span>
+    move(n-<span class="c-num">1</span>, temp, dest, src);  <span class="c-comment">// Step 3: move n-1 discs to dest</span>
+}
+
+<span class="c-type">void</span> main() {
+    <span class="c-type">int</span> n;
+    printf(<span class="c-str">"Enter number of discs\n"</span>);
+    scanf(<span class="c-str">"%d"</span>,&amp;n);
+    move(n, <span class="c-str">'A'</span>, <span class="c-str">'C'</span>, <span class="c-str">'B'</span>);
+}
+<span class="c-comment">// Compile: cc prog5b.c   Run: ./a.out
+// n=3 → 7 moves. n discs → (2^n - 1) moves total</span></code></pre>
+                    </div>
+                    <div id="g4-bst" class="tab-content">
+                        <pre><code><span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *llink, *rlink; };
+<span class="c-kw">typedef struct</span> node *NODE;
+NODE root = NULL;
+
+NODE insert(NODE root) {
+    NODE temp, cur, prev; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;item);
+    temp=(NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info=item; temp-&gt;llink=NULL; temp-&gt;rlink=NULL;
+    <span class="c-kw">if</span>(root==NULL) { root=temp; <span class="c-kw">return</span> root; }
+    prev=NULL; cur=root;
+    <span class="c-kw">while</span>(cur!=NULL) {
+        prev=cur;
+        <span class="c-kw">if</span>(item &lt; cur-&gt;info) cur=cur-&gt;llink;  <span class="c-comment">// go left</span>
+        <span class="c-kw">else</span> cur=cur-&gt;rlink;                   <span class="c-comment">// go right</span>
+    }
+    <span class="c-kw">if</span>(item &lt; prev-&gt;info) prev-&gt;llink=temp;
+    <span class="c-kw">else</span> prev-&gt;rlink=temp;
+    <span class="c-kw">return</span> root;
+}
+
+<span class="c-type">void</span> preorder(NODE root) {  <span class="c-comment">// Root→Left→Right</span>
+    <span class="c-kw">if</span>(root==NULL) <span class="c-kw">return</span>;
+    printf(<span class="c-str">"%d\t"</span>,root-&gt;info);
+    preorder(root-&gt;llink); preorder(root-&gt;rlink);
+}
+<span class="c-type">void</span> inorder(NODE root) {   <span class="c-comment">// Left→Root→Right (gives SORTED output!)</span>
+    <span class="c-kw">if</span>(root==NULL) <span class="c-kw">return</span>;
+    inorder(root-&gt;llink);
+    printf(<span class="c-str">"%d\t"</span>,root-&gt;info);
+    inorder(root-&gt;rlink);
+}
+<span class="c-type">void</span> postorder(NODE root) { <span class="c-comment">// Left→Right→Root</span>
+    <span class="c-kw">if</span>(root==NULL) <span class="c-kw">return</span>;
+    postorder(root-&gt;llink); postorder(root-&gt;rlink);
+    printf(<span class="c-str">"%d\t"</span>,root-&gt;info);
+}
+
+<span class="c-type">int</span> main() {
+    <span class="c-type">int</span> n; printf(<span class="c-str">"Enter number of nodes\n"</span>); scanf(<span class="c-str">"%d"</span>,&amp;n);
+    <span class="c-kw">while</span>(n--) root=insert(root);
+    printf(<span class="c-str">"\nPreorder: "</span>); preorder(root);
+    printf(<span class="c-str">"\nInorder:  "</span>); inorder(root);
+    printf(<span class="c-str">"\nPostorder:"</span>); postorder(root);
+    printf(<span class="c-str">"\n"</span>); <span class="c-kw">return</span> <span class="c-num">0</span>;
+}
+<span class="c-comment">// Compile: cc prog12.c   Run: ./a.out</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ONE BIG PROGRAM SECTION -->
+<section class="bigprog-section">
+    <div class="container">
+        <h2 class="section-title">🚀 ONE PROGRAM — Exp 7, 8, 9, 10, 11 COMBINED</h2>
+        <p class="section-sub">Write THIS in exam. Covers ALL linked list experiments. Compiles ✅ Runs ✅</p>
+
+        <div class="compile-box">
+            <span class="compile-label">📋 Compile & Run</span>
+            <code>cc prog_all_ll.c</code>
+            <span style="color:#6b7280; margin:0 10px">then</span>
+            <code>./a.out</code>
+        </div>
+
+        <div class="menu-map">
+            <h3 style="margin-bottom:14px; font-size:1rem; color:#f59e0b">📌 Menu Map — Tell supervisor which number to use</h3>
+            <div class="menu-grid">
+                <div class="menu-item" style="--mc:#7c3aed"><span class="menu-num">1-3</span><span class="menu-exp">EXP 8</span><span class="menu-desc">Singly LL: Insert / Delete / Display</span></div>
+                <div class="menu-item" style="--mc:#0891b2"><span class="menu-num">4-6</span><span class="menu-exp">EXP 9</span><span class="menu-desc">Max / Min / Sum</span></div>
+                <div class="menu-item" style="--mc:#059669"><span class="menu-num">7-8</span><span class="menu-exp">EXP 10</span><span class="menu-desc">Ordered LL: Sorted Insert / Display</span></div>
+                <div class="menu-item" style="--mc:#b45309"><span class="menu-num">9-11</span><span class="menu-exp">EXP 7</span><span class="menu-desc">Circular LL: Insert / Delete / Display</span></div>
+                <div class="menu-item" style="--mc:#dc2626"><span class="menu-num">12-14</span><span class="menu-exp">EXP 11</span><span class="menu-desc">Doubly LL: Insert / Delete / Display</span></div>
+                <div class="menu-item" style="--mc:#6b7280"><span class="menu-num">15</span><span class="menu-exp">EXIT</span><span class="menu-desc">Quit the program</span></div>
+            </div>
+        </div>
+
+        <div class="code-viewer" style="margin-top:0">
+            <div class="code-tabs">
+                <button class="tab-btn active" onclick="showTab('bp-full','bp')">📄 Full Program (Write This!)</button>
+                <button class="tab-btn" onclick="showTab('bp-demo','bp')">🎯 Demo to Show Supervisor</button>
+            </div>
+
+            <div id="bp-full" class="tab-content active">
+<pre><code><span class="c-comment">/*  ONE PROGRAM — EXP 7, 8, 9, 10, 11
+    Compile: cc prog_all_ll.c    Run: ./a.out  */</span>
+
+<span class="c-kw">#include</span> &lt;stdio.h&gt;
+<span class="c-kw">#include</span> &lt;stdlib.h&gt;
+
+<span class="c-comment">/* Node for Singly + Circular LL */</span>
+<span class="c-kw">struct</span> node { <span class="c-type">int</span> info; <span class="c-kw">struct</span> node *link; };
+<span class="c-kw">typedef struct</span> node *NODE;
+
+<span class="c-comment">/* Node for Doubly LL */</span>
+<span class="c-kw">struct</span> dnode { <span class="c-type">int</span> info; <span class="c-kw">struct</span> dnode *llink; <span class="c-kw">struct</span> dnode *rlink; };
+<span class="c-kw">typedef struct</span> dnode *DNODE;
+
+<span class="c-comment">/* Global pointers */</span>
+NODE  first  = NULL;   <span class="c-comment">/* Singly LL  (Exp 8, 9) */</span>
+NODE  ofirst = NULL;   <span class="c-comment">/* Ordered LL (Exp 10)   */</span>
+NODE  cfirst = NULL;   <span class="c-comment">/* Circular LL (Exp 7)   */</span>
+DNODE dfirst = NULL;   <span class="c-comment">/* Doubly LL  (Exp 11)   */</span>
+
+<span class="c-comment">/* ===== EXP 8: SINGLY LL — Insert FRONT ===== */</span>
+NODE singly_insert(NODE first) {
+    NODE temp; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;item);
+    temp = (NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info = item;
+    temp-&gt;link = first;
+    first = temp;
+    printf(<span class="c-str">"%d inserted into singly list\n"</span>, item);
+    <span class="c-kw">return</span> first;
+}
+
+<span class="c-comment">/* ===== EXP 8: SINGLY LL — Delete by KEY ===== */</span>
+NODE singly_delete(NODE first) {
+    NODE cur, prev; <span class="c-type">int</span> key;
+    printf(<span class="c-str">"Enter key to delete: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;key);
+    <span class="c-kw">if</span> (first == NULL) { printf(<span class="c-str">"List is empty\n"</span>); <span class="c-kw">return</span> first; }
+    <span class="c-kw">if</span> (key == first-&gt;info) {
+        cur = first; first = first-&gt;link;
+        printf(<span class="c-str">"%d deleted\n"</span>, cur-&gt;info); free(cur); <span class="c-kw">return</span> first;
+    }
+    cur = first; prev = NULL;
+    <span class="c-kw">while</span> (cur != NULL &amp;&amp; cur-&gt;info != key) { prev = cur; cur = cur-&gt;link; }
+    <span class="c-kw">if</span> (cur == NULL) { printf(<span class="c-str">"Key not found\n"</span>); <span class="c-kw">return</span> first; }
+    prev-&gt;link = cur-&gt;link;
+    printf(<span class="c-str">"%d deleted\n"</span>, cur-&gt;info); free(cur); <span class="c-kw">return</span> first;
+}
+
+<span class="c-comment">/* ===== EXP 8: SINGLY LL — Display ===== */</span>
+<span class="c-type">void</span> singly_display(NODE first) {
+    NODE cur;
+    <span class="c-kw">if</span> (first == NULL) { printf(<span class="c-str">"Singly list is empty\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"Singly List: "</span>);
+    <span class="c-kw">for</span> (cur = first; cur != NULL; cur = cur-&gt;link) printf(<span class="c-str">"%d  "</span>, cur-&gt;info);
+    printf(<span class="c-str">"\n"</span>);
+}
+
+<span class="c-comment">/* ===== EXP 9: MAX ===== */</span>
+<span class="c-type">void</span> findMax(NODE first) {
+    <span class="c-type">int</span> max; NODE ptr;
+    <span class="c-kw">if</span> (first == NULL) { printf(<span class="c-str">"List is empty\n"</span>); <span class="c-kw">return</span>; }
+    max = first-&gt;info;
+    <span class="c-kw">for</span> (ptr = first; ptr != NULL; ptr = ptr-&gt;link)
+        <span class="c-kw">if</span> (ptr-&gt;info &gt; max) max = ptr-&gt;info;
+    printf(<span class="c-str">"Maximum = %d\n"</span>, max);
+}
+
+<span class="c-comment">/* ===== EXP 9: MIN ===== */</span>
+<span class="c-type">void</span> findMin(NODE first) {
+    <span class="c-type">int</span> min; NODE ptr;
+    <span class="c-kw">if</span> (first == NULL) { printf(<span class="c-str">"List is empty\n"</span>); <span class="c-kw">return</span>; }
+    min = first-&gt;info;
+    <span class="c-kw">for</span> (ptr = first; ptr != NULL; ptr = ptr-&gt;link)
+        <span class="c-kw">if</span> (ptr-&gt;info &lt; min) min = ptr-&gt;info;
+    printf(<span class="c-str">"Minimum = %d\n"</span>, min);
+}
+
+<span class="c-comment">/* ===== EXP 9: SUM ===== */</span>
+<span class="c-type">void</span> findSum(NODE first) {
+    <span class="c-type">int</span> sum = <span class="c-num">0</span>; NODE ptr;
+    <span class="c-kw">if</span> (first == NULL) { printf(<span class="c-str">"List is empty\n"</span>); <span class="c-kw">return</span>; }
+    <span class="c-kw">for</span> (ptr = first; ptr != NULL; ptr = ptr-&gt;link) sum += ptr-&gt;info;
+    printf(<span class="c-str">"Sum = %d\n"</span>, sum);
+}
+
+<span class="c-comment">/* ===== EXP 10: ORDERED LL — Sorted Insert ===== */</span>
+NODE ordered_insert(NODE ofirst) {
+    NODE temp, cur, prev; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;item);
+    temp = (NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info = item; temp-&gt;link = NULL;
+    <span class="c-kw">if</span> (ofirst == NULL) { ofirst = temp; printf(<span class="c-str">"%d inserted (ordered)\n"</span>, item); <span class="c-kw">return</span> ofirst; }
+    <span class="c-kw">if</span> (item &lt; ofirst-&gt;info) { temp-&gt;link = ofirst; ofirst = temp; printf(<span class="c-str">"%d inserted (ordered)\n"</span>, item); <span class="c-kw">return</span> ofirst; }
+    cur = ofirst; prev = cur;
+    <span class="c-kw">while</span> (cur != NULL &amp;&amp; item &gt; cur-&gt;info) { prev = cur; cur = cur-&gt;link; }
+    prev-&gt;link = temp; temp-&gt;link = cur;
+    printf(<span class="c-str">"%d inserted (ordered)\n"</span>, item); <span class="c-kw">return</span> ofirst;
+}
+
+<span class="c-comment">/* ===== EXP 10: ORDERED LL — Display ===== */</span>
+<span class="c-type">void</span> ordered_display(NODE ofirst) {
+    NODE cur;
+    <span class="c-kw">if</span> (ofirst == NULL) { printf(<span class="c-str">"Ordered list is empty\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"Ordered List: "</span>);
+    <span class="c-kw">for</span> (cur = ofirst; cur != NULL; cur = cur-&gt;link) printf(<span class="c-str">"%d  "</span>, cur-&gt;info);
+    printf(<span class="c-str">"\n"</span>);
+}
+
+<span class="c-comment">/* ===== EXP 7: CIRCULAR LL — Insert REAR ===== */</span>
+NODE circular_insert(NODE cfirst) {
+    NODE temp, cur; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;item);
+    temp = (NODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> node));
+    temp-&gt;info = item; temp-&gt;link = temp;
+    <span class="c-kw">if</span> (cfirst == NULL) { cfirst = temp; printf(<span class="c-str">"%d inserted (circular)\n"</span>, item); <span class="c-kw">return</span> cfirst; }
+    cur = cfirst;
+    <span class="c-kw">while</span> (cur-&gt;link != cfirst) cur = cur-&gt;link;
+    cur-&gt;link = temp; temp-&gt;link = cfirst;
+    printf(<span class="c-str">"%d inserted (circular)\n"</span>, item); <span class="c-kw">return</span> cfirst;
+}
+
+<span class="c-comment">/* ===== EXP 7: CIRCULAR LL — Delete FRONT ===== */</span>
+NODE circular_delete(NODE cfirst) {
+    NODE cur;
+    <span class="c-kw">if</span> (cfirst == NULL) { printf(<span class="c-str">"Circular list is empty\n"</span>); <span class="c-kw">return</span> cfirst; }
+    <span class="c-kw">if</span> (cfirst-&gt;link == cfirst) { printf(<span class="c-str">"%d deleted (circular)\n"</span>, cfirst-&gt;info); free(cfirst); <span class="c-kw">return</span> NULL; }
+    cur = cfirst;
+    <span class="c-kw">while</span> (cur-&gt;link != cfirst) cur = cur-&gt;link;
+    cur-&gt;link = cfirst-&gt;link;
+    printf(<span class="c-str">"%d deleted (circular)\n"</span>, cfirst-&gt;info);
+    free(cfirst); cfirst = cur-&gt;link; <span class="c-kw">return</span> cfirst;
+}
+
+<span class="c-comment">/* ===== EXP 7: CIRCULAR LL — Display ===== */</span>
+<span class="c-type">void</span> circular_display(NODE cfirst) {
+    NODE cur;
+    <span class="c-kw">if</span> (cfirst == NULL) { printf(<span class="c-str">"Circular list is empty\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"Circular List: "</span>);
+    cur = cfirst;
+    <span class="c-kw">while</span> (cur-&gt;link != cfirst) { printf(<span class="c-str">"%d  "</span>, cur-&gt;info); cur = cur-&gt;link; }
+    printf(<span class="c-str">"%d\n"</span>, cur-&gt;info);
+}
+
+<span class="c-comment">/* ===== EXP 11: DOUBLY LL — Insert BEGIN ===== */</span>
+DNODE doubly_insert(DNODE dfirst) {
+    DNODE temp; <span class="c-type">int</span> item;
+    printf(<span class="c-str">"Enter value: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;item);
+    temp = (DNODE)malloc(<span class="c-kw">sizeof</span>(<span class="c-kw">struct</span> dnode));
+    temp-&gt;info = item; temp-&gt;llink = NULL; temp-&gt;rlink = NULL;
+    <span class="c-kw">if</span> (dfirst == NULL) { dfirst = temp; printf(<span class="c-str">"%d inserted (doubly)\n"</span>, item); <span class="c-kw">return</span> dfirst; }
+    dfirst-&gt;llink = temp;
+    temp-&gt;rlink   = dfirst;
+    dfirst = temp;
+    printf(<span class="c-str">"%d inserted (doubly)\n"</span>, item); <span class="c-kw">return</span> dfirst;
+}
+
+<span class="c-comment">/* ===== EXP 11: DOUBLY LL — Delete BEGIN ===== */</span>
+DNODE doubly_delete(DNODE dfirst) {
+    DNODE cur;
+    <span class="c-kw">if</span> (dfirst == NULL) { printf(<span class="c-str">"Doubly list is empty\n"</span>); <span class="c-kw">return</span> dfirst; }
+    cur = dfirst;
+    dfirst = dfirst-&gt;rlink;
+    <span class="c-kw">if</span> (dfirst != NULL) dfirst-&gt;llink = NULL;
+    printf(<span class="c-str">"%d deleted (doubly)\n"</span>, cur-&gt;info);
+    free(cur); <span class="c-kw">return</span> dfirst;
+}
+
+<span class="c-comment">/* ===== EXP 11: DOUBLY LL — Display ===== */</span>
+<span class="c-type">void</span> doubly_display(DNODE dfirst) {
+    DNODE cur;
+    <span class="c-kw">if</span> (dfirst == NULL) { printf(<span class="c-str">"Doubly list is empty\n"</span>); <span class="c-kw">return</span>; }
+    printf(<span class="c-str">"Doubly List: "</span>);
+    <span class="c-kw">for</span> (cur = dfirst; cur != NULL; cur = cur-&gt;rlink) printf(<span class="c-str">"%d  "</span>, cur-&gt;info);
+    printf(<span class="c-str">"\n"</span>);
+}
+
+<span class="c-comment">/* ===== MAIN MENU ===== */</span>
+<span class="c-type">int</span> main() {
+    <span class="c-type">int</span> choice;
+    <span class="c-kw">do</span> {
+        printf(<span class="c-str">"\n--- EXP 8: Singly LL ---\n"</span>);
+        printf(<span class="c-str">" 1.Singly Insert  2.Singly Delete  3.Singly Display\n"</span>);
+        printf(<span class="c-str">"--- EXP 9: Max/Min/Sum ---\n"</span>);
+        printf(<span class="c-str">" 4.Max  5.Min  6.Sum\n"</span>);
+        printf(<span class="c-str">"--- EXP 10: Ordered LL ---\n"</span>);
+        printf(<span class="c-str">" 7.Ordered Insert  8.Ordered Display\n"</span>);
+        printf(<span class="c-str">"--- EXP 7: Circular LL ---\n"</span>);
+        printf(<span class="c-str">" 9.Circular Insert  10.Circular Delete  11.Circular Display\n"</span>);
+        printf(<span class="c-str">"--- EXP 11: Doubly LL ---\n"</span>);
+        printf(<span class="c-str">" 12.Doubly Insert  13.Doubly Delete  14.Doubly Display\n"</span>);
+        printf(<span class="c-str">" 15.Exit\n"</span>);
+        printf(<span class="c-str">"Enter choice: "</span>); scanf(<span class="c-str">"%d"</span>, &amp;choice);
+
+        <span class="c-kw">switch</span> (choice) {
+            <span class="c-kw">case</span>  <span class="c-num">1</span>: first  = singly_insert(first);   <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">2</span>: first  = singly_delete(first);   <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">3</span>: singly_display(first);           <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">4</span>: findMax(first);                  <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">5</span>: findMin(first);                  <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">6</span>: findSum(first);                  <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">7</span>: ofirst = ordered_insert(ofirst); <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">8</span>: ordered_display(ofirst);         <span class="c-kw">break</span>;
+            <span class="c-kw">case</span>  <span class="c-num">9</span>: cfirst = circular_insert(cfirst);<span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">10</span>: cfirst = circular_delete(cfirst);<span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">11</span>: circular_display(cfirst);        <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">12</span>: dfirst = doubly_insert(dfirst);  <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">13</span>: dfirst = doubly_delete(dfirst);  <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">14</span>: doubly_display(dfirst);          <span class="c-kw">break</span>;
+            <span class="c-kw">case</span> <span class="c-num">15</span>: exit(<span class="c-num">0</span>);
+        }
+    } <span class="c-kw">while</span> (choice != <span class="c-num">15</span>);
+    <span class="c-kw">return</span> <span class="c-num">0</span>;
+}</code></pre>
+            </div>
+
+            <div id="bp-demo" class="tab-content">
+                <div class="demo-steps">
+                    <h4 style="color:#f59e0b; margin-bottom:16px">🎯 Exact steps to show supervisor — do this in order</h4>
+                    <div class="demo-step">
+                        <span class="step-num">1</span>
+                        <div><strong>EXP 8 — Singly Insert 3 values</strong><br>Press <code>1</code> → enter <code>10</code> | Press <code>1</code> → enter <code>20</code> | Press <code>1</code> → enter <code>30</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">2</span>
+                        <div><strong>Display singly list</strong><br>Press <code>3</code> → Shows: <code>30  20  10</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">3</span>
+                        <div><strong>EXP 9 — Max / Min / Sum</strong><br>Press <code>4</code> → Max=30 | Press <code>5</code> → Min=10 | Press <code>6</code> → Sum=60</div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">4</span>
+                        <div><strong>EXP 10 — Ordered Insert 3 values</strong><br>Press <code>7</code> → enter <code>50</code> | Press <code>7</code> → enter <code>10</code> | Press <code>7</code> → enter <code>30</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">5</span>
+                        <div><strong>Ordered Display (auto sorted!)</strong><br>Press <code>8</code> → Shows: <code>10  30  50</code> ✅ sorted!</div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">6</span>
+                        <div><strong>EXP 7 — Circular Insert 2 values</strong><br>Press <code>9</code> → enter <code>5</code> | Press <code>9</code> → enter <code>15</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">7</span>
+                        <div><strong>Circular Display then Delete</strong><br>Press <code>11</code> → Shows: <code>5  15</code> | Press <code>10</code> → 5 deleted | Press <code>11</code> → Shows: <code>15</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">8</span>
+                        <div><strong>EXP 11 — Doubly Insert 2 values</strong><br>Press <code>12</code> → enter <code>100</code> | Press <code>12</code> → enter <code>200</code></div>
+                    </div>
+                    <div class="demo-step">
+                        <span class="step-num">9</span>
+                        <div><strong>Doubly Display then Delete</strong><br>Press <code>14</code> → Shows: <code>200  100</code> | Press <code>13</code> → 200 deleted | Press <code>14</code> → Shows: <code>100</code></div>
+                    </div>
+                    <div class="demo-step" style="background:rgba(5,150,105,0.1); border-color:rgba(5,150,105,0.3)">
+                        <span class="step-num" style="background:#059669">✓</span>
+                        <div><strong>DONE! All 5 experiments demonstrated!</strong><br>Press <code>15</code> to exit. You passed! 🎉</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LAST-MINUTE CHEATSHEET -->
+<section class="cheat-section">
+    <div class="container">
+        <h2 class="section-title">⚡ Last-Minute Exam Cheatsheet</h2>
+        <div class="cheat-grid">
+            <div class="cheat-card">
+                <h4>📋 Compile Commands</h4>
+                <table class="cheat-table">
+                    <tr><td>All programs (except Exp 3)</td><td><code>cc filename.c</code></td></tr>
+                    <tr><td>Exp 3 (uses math pow)</td><td><code>cc prog3.c -lm</code></td></tr>
+                    <tr><td>Run</td><td><code>./a.out</code></td></tr>
+                </table>
+            </div>
+            <div class="cheat-card">
+                <h4>🔤 Headers to Remember</h4>
+                <table class="cheat-table">
+                    <tr><td>Exp 2,3</td><td><code>#include &lt;ctype.h&gt;</code> (isdigit, isalpha)</td></tr>
+                    <tr><td>Exp 3</td><td><code>#include &lt;math.h&gt;</code> (pow)</td></tr>
+                    <tr><td>All LL progs</td><td><code>#include &lt;stdlib.h&gt;</code> (malloc, free)</td></tr>
+                    <tr><td>Exp 2</td><td><code>#include &lt;string.h&gt;</code> (strcpy)</td></tr>
+                </table>
+            </div>
+            <div class="cheat-card">
+                <h4>⚠️ Common Mistakes to AVOID</h4>
+                <ul class="mistake-list">
+                    <li><span class="x">✗</span> Exp 7: <code>malloc(sizeof(NODE))</code> → ❌ Wrong! Use <code>malloc(sizeof(struct node))</code></li>
+                    <li><span class="x">✗</span> Exp 3: pop order — always pop2 first (op2), then pop1 (op1)</li>
+                    <li><span class="x">✗</span> Circular Q: forget <code>% MAX</code> in insert/delete/display</li>
+                    <li><span class="x">✗</span> BST: forget to set <code>temp→llink = NULL; temp→rlink = NULL;</code></li>
+                    <li><span class="x">✗</span> Doubly LL: forget <code>first→llink = NULL</code> after delete</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>🎯 Quick Program Summary</h4>
+                <table class="cheat-table">
+                    <tr><th>Exp</th><th>Topic</th><th>Context</th></tr>
+                    <tr><td>1</td><td>Stack (Array)</td><td>File pile</td></tr>
+                    <tr><td>2</td><td>Infix→Postfix</td><td>OS expression</td></tr>
+                    <tr><td>3</td><td>Postfix Eval</td><td>Calculate result</td></tr>
+                    <tr><td>4</td><td>Queue (Array)</td><td>Toll gate</td></tr>
+                    <tr><td>5a</td><td>Binary Search</td><td>Library search</td></tr>
+                    <tr><td>5b</td><td>Tower of Hanoi</td><td>Recursion</td></tr>
+                    <tr><td>6</td><td>Circular Queue</td><td>Traffic signal</td></tr>
+                    <tr><td>7</td><td>Circular LL</td><td>Parking lot</td></tr>
+                    <tr><td>8</td><td>Singly LL</td><td>Treasure hunt</td></tr>
+                    <tr><td>9</td><td>LL Max/Min/Sum</td><td>Number list</td></tr>
+                    <tr><td>10</td><td>Ordered LL</td><td>Phonebook</td></tr>
+                    <tr><td>11</td><td>Doubly LL</td><td>iPod songs</td></tr>
+                    <tr><td>12</td><td>BST</td><td>Book chapters</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STUDY ORDER -->
+<section class="order-section">
+    <div class="container">
+        <h2 class="section-title">🗺️ Smart Study Order (Time = ⏰)</h2>
+        <div class="order-list">
+            <div class="order-item priority-high">
+                <div class="order-num">1ST</div>
+                <div class="order-content">
+                    <strong>Master the NODE skeleton + do-while menu</strong>
+                    <span class="time-badge">15 min</span>
+                    <p>This appears in Exp 7,8,9,10,11,12 — learn once, reuse 6 times!</p>
+                </div>
+            </div>
+            <div class="order-item priority-high">
+                <div class="order-num">2ND</div>
+                <div class="order-content">
+                    <strong>Stack (Exp 1) → then Queue (Exp 4) → then Circular Queue (Exp 6)</strong>
+                    <span class="time-badge">20 min</span>
+                    <p>They share the array pattern. Only change: pointer names and wrap logic.</p>
+                </div>
+            </div>
+            <div class="order-item priority-medium">
+                <div class="order-num">3RD</div>
+                <div class="order-content">
+                    <strong>Singly LL (Exp 8) → then Exp 9 (just add findMax/Min/Sum)</strong>
+                    <span class="time-badge">20 min</span>
+                    <p>Exp 9 = Exp 8 code + 3 extra functions. Copy-paste + extend!</p>
+                </div>
+            </div>
+            <div class="order-item priority-medium">
+                <div class="order-num">4TH</div>
+                <div class="order-content">
+                    <strong>Infix→Postfix (Exp 2) — dry run (a+b)*c step by step</strong>
+                    <span class="time-badge">15 min</span>
+                    <p>Understand the rules table. Then glance at code — it follows the rules exactly.</p>
+                </div>
+            </div>
+            <div class="order-item priority-medium">
+                <div class="order-num">5TH</div>
+                <div class="order-content">
+                    <strong>BST Traversals (Exp 12) + Binary Search (Exp 5a) + Hanoi (Exp 5b)</strong>
+                    <span class="time-badge">20 min</span>
+                    <p>Pre/In/Post is a simple pattern. Hanoi is just 3 lines of recursion.</p>
+                </div>
+            </div>
+            <div class="order-item priority-low">
+                <div class="order-num">LAST</div>
+                <div class="order-content">
+                    <strong>Ordered LL (Exp 10) + Doubly LL (Exp 11) + Circular LL (Exp 7)</strong>
+                    <span class="time-badge">15 min</span>
+                    <p>Variations of basic LL. If you know Exp 8, these are just small tweaks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>🎓 <strong>DSA Lab – 23CS305</strong> | Dept. CS&E, MCE Hassan</p>
+        <p class="footer-sub">You studied everything. You've got this. Walk in confident tomorrow! 💪🔥</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
