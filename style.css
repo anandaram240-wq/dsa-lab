@@ -727,16 +727,157 @@ pre code { background: none; padding: 0; color: #cbd5e1; line-height: 1.8; }
 .footer p strong { color: var(--text); }
 .footer-sub { margin-top: 8px; color: #6ee7b7; font-weight: 600; font-size: 1rem; }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 600px) {
-    .group-header { flex-direction: column; align-items: flex-start; }
-    .toggle-icon { position: absolute; right: 20px; top: 24px; }
-    .group-header { position: relative; }
+/* ===================== RESPONSIVE — MOBILE FIRST ===================== */
+
+/* Make comparison tables scroll horizontally on small screens */
+.comparison-table { -webkit-overflow-scrolling: touch; }
+
+/* ---- Tablet: max 768px ---- */
+@media (max-width: 768px) {
+
+    /* Layout */
+    .container { padding: 0 16px; }
+    section { padding: 40px 0; }
+
+    /* Hero */
+    .hero { padding: 40px 16px 28px; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-stats { gap: 20px; }
+    .stat-num { font-size: 1.6rem; }
+    .exam-timer { padding: 10px 18px; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    /* Group cards */
+    .group-header { padding: 18px 16px; gap: 12px; position: relative; }
+    .group-left { min-width: unset; }
+    .group-header h3 { font-size: 1rem; }
+    .group-header p { font-size: 0.8rem; }
+    .group-programs { gap: 6px; }
+    .prog-tag { font-size: 0.7rem; padding: 3px 10px; }
+    .toggle-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); }
+    .group-card.open .toggle-icon { transform: translateY(-50%) rotate(180deg); }
+    .group-body { padding: 16px; }
+
+    /* Comparison table — horizontal scroll */
+    .comparison-table {
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    .comp-header, .comp-row {
+        min-width: 560px;
+        display: grid;
+    }
+    .comp-cell { padding: 8px 10px; font-size: 0.78rem; }
+    .comp-cell code { font-size: 0.72rem; white-space: normal; word-break: break-all; }
+
+    /* Memory tip */
+    .memory-tip { font-size: 0.82rem; padding: 12px 14px; }
+
+    /* Flow diagram — stack vertically */
     .flow-arrow { display: none; }
-    .flow-diagram { flex-direction: column; }
-    .tree-connectors { gap: 40px; }
+    .flow-diagram { flex-direction: column; gap: 8px; padding: 14px; }
+    .flow-step { min-width: unset; width: 100%; }
+
+    /* Two col code — single col */
+    .two-col-code { grid-template-columns: 1fr; }
+
+    /* Secret grid — single col */
+    .secret-grid { grid-template-columns: 1fr; }
+
+    /* Code mini */
+    .code-mini { font-size: 0.7rem; overflow-x: auto; }
+
+    /* Walkthrough table */
+    .walkthrough-box { overflow-x: auto; }
+    .dry-run table { min-width: 320px; font-size: 0.76rem; }
+
+    /* Cheat grid */
+    .cheat-grid { grid-template-columns: 1fr; }
+    .cheat-table { font-size: 0.78rem; }
+    .cheat-table td, .cheat-table th { padding: 5px 8px; }
+
+    /* Order section */
+    .order-item { padding: 14px 16px; gap: 12px; flex-wrap: wrap; }
+    .order-num { font-size: 0.7rem; }
+
+    /* BST visual */
+    .bst-visual { padding: 12px; }
+    .tree-connectors { gap: 40px; font-size: 0.68rem; }
     .last-row { margin-left: 0; }
+    .tree-node { padding: 6px 12px; font-size: 0.75rem; }
+    .tree-row { gap: 20px; }
+
+    /* Traversals */
+    .trav-item { flex-wrap: wrap; gap: 8px; font-size: 0.82rem; }
+
+    /* LL skeleton */
+    .ll-skeleton { padding: 14px; }
+    .ll-skeleton pre { font-size: 0.72rem; }
+
+    /* Compile box */
+    .compile-box { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px; }
+    .compile-box code { font-size: 0.88rem; }
+
+    /* Menu grid */
+    .menu-grid { grid-template-columns: 1fr; }
+
+    /* Code tabs */
+    .code-tabs { flex-wrap: nowrap; overflow-x: auto; }
+    .tab-btn { padding: 8px 14px; font-size: 0.76rem; }
+    .tab-content { padding: 14px; }
+    pre code { font-size: 0.74rem; line-height: 1.7; }
 }
+
+/* ---- Mobile: max 480px ---- */
+@media (max-width: 480px) {
+
+    /* Hero */
+    .hero h1 { font-size: 1.5rem; }
+    .hero-sub { font-size: 0.88rem; }
+    .badge { font-size: 0.72rem; padding: 5px 14px; }
+    .hero-stats { gap: 16px; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.72rem; }
+    .exam-timer { padding: 8px 14px; }
+    .timer-count { font-size: 0.95rem; }
+    .timer-label { font-size: 0.8rem; }
+
+    /* Sections */
+    .section-title { font-size: 1.2rem; }
+    .section-sub { font-size: 0.85rem; margin-bottom: 24px; }
+
+    /* Group headers */
+    .group-header { padding: 14px 14px; }
+    .group-header h3 { font-size: 0.92rem; }
+    .group-badge { font-size: 0.65rem; }
+    .group-programs { display: none; } /* hide tags on tiny screens */
+    .group-body { padding: 12px; }
+
+    /* Comparison table */
+    .comp-cell { padding: 7px 8px; font-size: 0.74rem; }
+    .comp-header .comp-cell { font-size: 0.7rem; }
+
+    /* Memory tip */
+    .memory-tip { font-size: 0.78rem; flex-direction: column; gap: 6px; }
+    .tip-icon { display: none; }
+
+    /* Secret cards */
+    .secret-card { padding: 16px; }
+    .code-mini { font-size: 0.68rem; }
+
+    /* Order items */
+    .order-item { padding: 12px; gap: 10px; }
+    .time-badge { margin-left: 0; display: block; margin-top: 4px; }
+
+    /* BST */
+    .bst-section { padding: 16px; }
+    .tree-connectors { gap: 20px; }
+
+    /* Tab content code */
+    pre code { font-size: 0.68rem; line-height: 1.65; }
+}
+
 
 /* ===================== ONE BIG PROGRAM SECTION ===================== */
 .bigprog-section {
